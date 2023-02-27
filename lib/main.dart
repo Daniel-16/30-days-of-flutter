@@ -42,55 +42,127 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          centerTitle: true,
-        ),
-        body: Center(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
+      body: Center(
+          child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(8),
+            width: 100,
+            height: 100,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(15),
+                gradient:
+                    const LinearGradient(colors: [Colors.pink, Colors.red]),
+                boxShadow: const [
+                  BoxShadow(color: Colors.grey, blurRadius: 10)
+                ]),
+            child: const Text("Box with radius",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.normal)),
+          ),
+          Container(
+            padding: const EdgeInsets.all(8),
+            width: 100,
+            height: 100,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(15),
+                gradient:
+                    const LinearGradient(colors: [Colors.pink, Colors.red]),
+                boxShadow: const [
+                  BoxShadow(color: Colors.grey, blurRadius: 10)
+                ]),
+            child: const Text("Box with radius",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.normal)),
+          ),
+        ],
+      )),
+      drawer: Drawer(
+        backgroundColor: Colors.redAccent,
+        width: 300,
+        child: ListView(
           children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(15),
-                  gradient:
-                      const LinearGradient(colors: [Colors.pink, Colors.red]),
-                  boxShadow: const [
-                    BoxShadow(color: Colors.grey, blurRadius: 10)
-                  ]),
-              child: const Text("Box with radius",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal)),
+            const UserAccountsDrawerHeader(
+                accountName: Text("Daniel Toba"),
+                accountEmail: Text("danieloloruntoba681@gmail.com"),
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.redAccent,
+                  child: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                    size: 60,
+                  ),
+                )),
+            ListTile(
+              leading: const Icon(Icons.person, color: Colors.white70),
+              title: const Text(
+                "Account name",
+                style: TextStyle(color: Colors.white),
+              ),
+              subtitle: const Text(
+                "Change account details",
+                style: TextStyle(color: Colors.white70),
+              ),
+              trailing: const Icon(
+                Icons.edit,
+                color: Colors.white70,
+              ),
+              onTap: () {},
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(15),
-                  gradient:
-                      const LinearGradient(colors: [Colors.pink, Colors.red]),
-                  boxShadow: const [
-                    BoxShadow(color: Colors.grey, blurRadius: 10)
-                  ]),
-              child: const Text("Box with radius",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
-                      fontWeight: FontWeight.normal)),
+            ListTile(
+              leading: const Icon(Icons.email, color: Colors.white70),
+              title: const Text(
+                "Email Address",
+                style: TextStyle(color: Colors.white),
+              ),
+              subtitle: const Text(
+                "Edit your email",
+                style: TextStyle(color: Colors.white70),
+              ),
+              trailing: const Icon(
+                Icons.edit,
+                color: Colors.white70,
+              ),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.notifications, color: Colors.white70),
+              title: const Text(
+                "Notifications",
+                style: TextStyle(color: Colors.white),
+              ),
+              subtitle: const Text(
+                "Manage app notifications",
+                style: TextStyle(color: Colors.white70),
+              ),
+              trailing: const Icon(
+                Icons.edit,
+                color: Colors.white70,
+              ),
+              onTap: () {},
             ),
           ],
-        )));
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: (() => {}),
+          tooltip: "Floating Action Button",
+          child: const Icon(Icons.chat_rounded)),
+    );
   }
 }
