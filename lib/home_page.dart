@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'drawer_widget.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -11,13 +13,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String text = "";
-  final TextEditingController _nameController = TextEditingController();
-  //Onchange function to change the inputted text
-  void changeText(text) {
-    setState(() {
-      this.text = text;
-    });
+  final String url = 'https://jsonplaceholder.typicode.com/posts';
+  var data;
+  // final TextEditingController _nameController = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchData();
+  }
+
+  fetchData() async {
+    var res = await http.get(Uri.parse(url));
+    data = jsonDecode(res.body);
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
@@ -28,45 +43,40 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         centerTitle: true,
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Card(
-              child: Column(
-                children: <Widget>[
-                  Image.asset(
-                    "assets/hack.jpg",
-                  ),
-                  const SizedBox(height: 20),
-                  Text(
-                    text,
-                    style: const TextStyle(fontSize: 25),
-                  ),
-                  const SizedBox(height: 30),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: TextField(
-                      controller: _nameController,
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15.0))),
-                          prefixIcon: Icon(Icons.pending),
-                          labelText: "Enter text"),
+      body: data != null
+          ? ListView.builder(
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: ListTile(
+                    tileColor: Colors.white,
+                    title: Text(
+                      data[index]["title"],
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                  )
-                ],
-              ),
+                    leading: const Icon(Icons.comment),
+                    trailing: const Icon(Icons.person),
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    subtitle: Text(
+                      '${data[index]["body"]}',
+                      style: const TextStyle(fontSize: 15),
+                    ),
+                  ),
+                );
+              },
+              itemCount: data.length,
+            )
+          : const Center(
+              child: CircularProgressIndicator(),
             ),
-          ),
-        ),
-      ),
       drawer: const Drawerwidget(),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            text = _nameController.text;
-            changeText(text);
+            // text = _nameController.text;
+            // changeText(text);
           },
           tooltip: "Floating Action Button",
           child: const Icon(Icons.send)),
