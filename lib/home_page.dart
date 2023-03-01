@@ -42,6 +42,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () => {Navigator.pop(context)},
+              icon: const Icon(Icons.exit_to_app_rounded))
+        ],
       ),
       body: data != null
           ? ListView.builder(
