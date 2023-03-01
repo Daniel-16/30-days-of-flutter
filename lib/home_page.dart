@@ -77,6 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
           : const Center(
               child: CircularProgressIndicator(),
             ),
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+        BottomNavigationBarItem(icon: Icon(Icons.add), label: "Add"),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Account"),
+      ]),
       drawer: const Drawerwidget(),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
