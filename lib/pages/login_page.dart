@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/helper/shared_pref_helper.dart';
 import 'package:flutter_practice/home_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,6 +13,14 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _userEmailController = TextEditingController();
   final _passwordController = TextEditingController();
+  static const routeName = "/home";
+  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  // Future<void> onSave() async {
+  //   final SharedPreferences prefs = await _prefs;
+  //   setState(() {
+  //     prefs.setBool("loggedIn", true);
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -55,17 +64,18 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: "Enter password to login"),
                     ),
                     const SizedBox(height: 10),
-                    MaterialButton(
-                      onPressed: () => {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const MyHomePage(title: "Flutter App")))
+                    ElevatedButton(
+                      onPressed: () {
+                        SharedPreferenceHelper.prefs?.setBool("loggedIn", true);
+                        Navigator.pushReplacementNamed(context, "/home");
                       },
-                      color: Colors.red,
-                      colorBrightness: Brightness.dark,
-                      child: const Text("Login"),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: const <Widget>[
+                          Text("Login"),
+                          Icon(Icons.arrow_forward)
+                        ],
+                      ),
                     )
                   ],
                 ),

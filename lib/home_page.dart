@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/helper/shared_pref_helper.dart';
+import 'package:flutter_practice/pages/login_page.dart';
 import 'drawer_widget.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -44,7 +46,10 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         actions: [
           IconButton(
-              onPressed: () => {Navigator.pop(context)},
+              onPressed: () {
+                SharedPreferenceHelper.prefs?.setBool("loggedIn", false);
+                Navigator.pushReplacementNamed(context, '/login');
+              },
               icon: const Icon(Icons.exit_to_app_rounded))
         ],
       ),
