@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/helper/shared_pref_helper.dart';
-import 'package:flutter_practice/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,14 +12,12 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _userEmailController = TextEditingController();
   final _passwordController = TextEditingController();
-  static const routeName = "/home";
-  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  // Future<void> onSave() async {
-  //   final SharedPreferences prefs = await _prefs;
-  //   setState(() {
-  //     prefs.setBool("loggedIn", true);
-  //   });
-  // }
+  String email = "";
+  void handleEmail(email) {
+    setState(() {
+      this.email = email;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: "Email Address",
                           hintText: "Enter your email address"),
                     ),
+                    if (email != 'user@mail.com') const Text("Email not valid"),
                     TextFormField(
                       controller: _passwordController,
                       keyboardType: TextInputType.visiblePassword,
@@ -66,8 +64,15 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () {
-                        SharedPreferenceHelper.prefs?.setBool("loggedIn", true);
-                        Navigator.pushReplacementNamed(context, "/home");
+                        String email = _userEmailController.text;
+                        handleEmail(email);
+                        if (email == "user@mail.com") {
+                          SharedPreferenceHelper.prefs
+                              ?.setBool("loggedIn", true);
+                          Navigator.pushReplacementNamed(context, "/home");
+                        } else {
+                          print("Could not login");
+                        }
                       },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
