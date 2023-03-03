@@ -22,73 +22,127 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text("Login"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
-        child: Center(
-          child: SingleChildScrollView(
-              child: Form(
-            key: formKey,
-            child: Card(
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)),
-              margin: const EdgeInsets.all(10),
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Image.asset(
-                      "assets/signin.png",
+        // appBar: AppBar(
+        //   centerTitle: true,
+        //   title: const Text("Login"),
+        // ),
+        backgroundColor: Colors.white,
+        body: Stack(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 0),
+              child: Center(
+                child: SingleChildScrollView(
+                    child: Form(
+                  key: formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Image.asset(
+                          "assets/signin.png",
+                        ),
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Login",
+                            style: TextStyle(
+                                fontSize: 40, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        TextFormField(
+                          controller: _userEmailController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                              labelText: "Email Address",
+                              prefixIcon: Icon(Icons.alternate_email)),
+                        ),
+                        // if (email != 'user@mail.com') const Text("Email not valid"),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        TextFormField(
+                          controller: _passwordController,
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                              labelText: "Password",
+                              hintText: "Enter password to login",
+                              suffixIcon: Icon(Icons.visibility_off_outlined),
+                              prefixIcon: Icon(Icons.lock_open_rounded)),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(
+                            "Forgot password?",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 17),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          width: 350,
+                          height: 45,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              String email = _userEmailController.text;
+                              handleEmail(email);
+                              if (email == "user@mail.com") {
+                                SharedPreferenceHelper.prefs
+                                    ?.setBool("loggedIn", true);
+                                Navigator.pushReplacementNamed(
+                                    context, "/home");
+                              } else {
+                                print("Could not login");
+                              }
+                            },
+                            style: ButtonStyle(
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ))),
+                            child: const Text(
+                              "Login",
+                              style: TextStyle(fontSize: 17),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    TextFormField(
-                      controller: _userEmailController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                          labelText: "Email Address",
-                          hintText: "Enter your email address"),
-                    ),
-                    if (email != 'user@mail.com') const Text("Email not valid"),
-                    TextFormField(
-                      controller: _passwordController,
-                      keyboardType: TextInputType.visiblePassword,
-                      obscureText: true,
-                      decoration: const InputDecoration(
-                          labelText: "Password",
-                          hintText: "Enter password to login"),
-                    ),
-                    const SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        String email = _userEmailController.text;
-                        handleEmail(email);
-                        if (email == "user@mail.com") {
-                          SharedPreferenceHelper.prefs
-                              ?.setBool("loggedIn", true);
-                          Navigator.pushReplacementNamed(context, "/home");
-                        } else {
-                          print("Could not login");
-                        }
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const <Widget>[
-                          Text("Login"),
-                          Icon(Icons.arrow_forward)
-                        ],
-                      ),
-                    )
-                  ],
-                ),
+                  ),
+                )),
               ),
             ),
-          )),
-        ),
-      ),
-    );
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      Text(
+                        "Don't have an account?",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black54),
+                      ),
+                      Padding(padding: EdgeInsets.all(2.5)),
+                      Text(
+                        "Register",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  )),
+            ),
+          ],
+        ));
   }
 }
