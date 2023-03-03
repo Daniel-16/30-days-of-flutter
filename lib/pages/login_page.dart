@@ -12,6 +12,12 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _userEmailController = TextEditingController();
   final _passwordController = TextEditingController();
+  String email = "";
+  void handleEmail(email) {
+    setState(() {
+      this.email = email;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                           labelText: "Email Address",
                           hintText: "Enter your email address"),
                     ),
+                    if (email != 'user@mail.com') const Text("Email not valid"),
                     TextFormField(
                       controller: _passwordController,
                       keyboardType: TextInputType.visiblePassword,
@@ -57,8 +64,15 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () {
-                        SharedPreferenceHelper.prefs?.setBool("loggedIn", true);
-                        Navigator.pushReplacementNamed(context, "/home");
+                        String email = _userEmailController.text;
+                        handleEmail(email);
+                        if (email == "user@mail.com") {
+                          SharedPreferenceHelper.prefs
+                              ?.setBool("loggedIn", true);
+                          Navigator.pushReplacementNamed(context, "/home");
+                        } else {
+                          print("Could not login");
+                        }
                       },
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
