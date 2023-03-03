@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/helper/shared_pref_helper.dart';
-import 'package:flutter_practice/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,14 +12,6 @@ class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final _userEmailController = TextEditingController();
   final _passwordController = TextEditingController();
-  static const routeName = "/home";
-  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  // Future<void> onSave() async {
-  //   final SharedPreferences prefs = await _prefs;
-  //   setState(() {
-  //     prefs.setBool("loggedIn", true);
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {

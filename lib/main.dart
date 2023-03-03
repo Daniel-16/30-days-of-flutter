@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         if (settings.name == '/login') {
           return MaterialPageRoute(builder: (context) => const LoginPage());
         }
+        return null;
       },
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,

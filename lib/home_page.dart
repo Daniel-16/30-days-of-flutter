@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/helper/shared_pref_helper.dart';
-import 'package:flutter_practice/pages/login_page.dart';
 import 'drawer_widget.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -16,11 +15,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final String url = 'https://jsonplaceholder.typicode.com/posts';
+  // ignore: prefer_typing_uninitialized_variables
   var data;
   // final TextEditingController _nameController = TextEditingController();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchData();
   }
@@ -33,7 +32,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
