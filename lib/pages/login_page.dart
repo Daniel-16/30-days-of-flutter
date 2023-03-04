@@ -128,16 +128,21 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: Alignment.bottomCenter,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      Text(
+                    children: <Widget>[
+                      const Text(
                         "Don't have an account?",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.black54),
                       ),
-                      Padding(padding: EdgeInsets.all(2.5)),
-                      Text(
-                        "Register",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                      const Padding(padding: EdgeInsets.all(2.5)),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, "/signup");
+                        },
+                        child: const Text(
+                          "Register",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ],
                   )),
