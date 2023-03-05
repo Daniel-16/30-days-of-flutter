@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
 
   @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+  @override
   Widget build(BuildContext context) {
     final formKey = GlobalKey<FormState>();
+    bool isButtonClicked = false;
+
+    void toggleButton() {
+      setState(() {
+        isButtonClicked = !isButtonClicked;
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Colors.white,
@@ -62,10 +75,30 @@ class SignupPage extends StatelessWidget {
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(10)))),
-                          onPressed: () {},
-                          child: const Text(
-                            "Sign up",
-                            style: TextStyle(fontSize: 17),
+                          onPressed: () {
+                            toggleButton;
+                            print(isButtonClicked);
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              SizedBox(
+                                height: 20,
+                                width: 20,
+                                child: isButtonClicked
+                                    ? const CircularProgressIndicator(
+                                        backgroundColor: Colors.white,
+                                      )
+                                    : const SizedBox(),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              const Text(
+                                "Sign up",
+                                style: TextStyle(fontSize: 17),
+                              )
+                            ],
                           )),
                     ),
                     const SizedBox(
