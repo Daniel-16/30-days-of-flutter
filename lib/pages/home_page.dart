@@ -50,16 +50,81 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Icon(Icons.person, size: 40),
+                  const CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    child: Icon(Icons.person, color: Colors.black54),
+                  ),
                 ],
+              ),
+              const SizedBox(
+                height: 30,
               ),
               const TextField(
                 decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color.fromARGB(255, 214, 214, 214),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
                     labelText: "Search here...",
                     prefixIcon: Icon(Icons.search),
-                    hoverColor: Colors.grey,
                     suffixIcon: Icon(Icons.sync_alt_outlined)),
-              )
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  SizedBox(
+                    width: 90,
+                    child: Card(
+                      color: Colors.black,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Popular",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 90,
+                    child: Card(
+                      color: Colors.grey,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Popular",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 90,
+                    child: Card(
+                      color: Colors.grey,
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Popular",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
