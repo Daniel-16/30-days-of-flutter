@@ -7,26 +7,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   title: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     children: const [
-      //       Text(
-      //         "Good Morning,",
-      //         style: TextStyle(color: Colors.black, fontSize: 17),
-      //       ),
-      //       Text(
-      //         "John Doe",
-      //         style: TextStyle(
-      //             color: Colors.black,
-      //             fontWeight: FontWeight.bold,
-      //             fontSize: 20),
-      //       ),
-      //     ],
-      //   ),
-      //   backgroundColor: Colors.white,
-      //   elevation: 0,
-      // ),
       body: Stack(children: [
         Padding(
           padding: const EdgeInsets.only(top: 90, left: 25, right: 25),
@@ -50,19 +30,180 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Icon(Icons.person, size: 40),
+                  const CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    child: Icon(Icons.person, color: Colors.black54),
+                  ),
                 ],
+              ),
+              const SizedBox(
+                height: 30,
               ),
               const TextField(
                 decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color.fromARGB(255, 214, 214, 214),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderSide: BorderSide(color: Colors.grey)),
                     labelText: "Search here...",
                     prefixIcon: Icon(Icons.search),
-                    hoverColor: Colors.grey,
                     suffixIcon: Icon(Icons.sync_alt_outlined)),
-              )
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    SizedBox(
+                      width: 90,
+                      child: Card(
+                        color: Colors.black,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Popular",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 90,
+                      child: Card(
+                        color: Colors.grey,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Popular",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 90,
+                      child: Card(
+                        color: Colors.grey,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Popular",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 90,
+                      child: Card(
+                        color: Colors.grey,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Popular",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 90,
+                      child: Card(
+                        color: Colors.grey,
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Text(
+                            "Popular",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.only(top: 300, left: 8, right: 8),
+          child: GridView.count(
+            crossAxisCount: 3,
+            crossAxisSpacing: 4.0,
+            mainAxisSpacing: 8.0,
+            scrollDirection: Axis.vertical,
+            children: [
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset(
+                  "assets/hack.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset("assets/signup.png", fit: BoxFit.cover),
+              ),
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset("assets/signup.png", fit: BoxFit.cover),
+              ),
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset(
+                  "assets/signin.png",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset(
+                  "assets/hack.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Card(
+                semanticContainer: true,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset(
+                  "assets/hack.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ],
+          ),
+        )
       ]),
     );
   }
