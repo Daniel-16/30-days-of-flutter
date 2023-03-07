@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+  void onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +93,7 @@ class HomePage extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            "Popular",
+                            "Recent",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black,
@@ -97,7 +109,7 @@ class HomePage extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            "Popular",
+                            "Favorite",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black,
@@ -113,7 +125,7 @@ class HomePage extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            "Popular",
+                            "New",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black,
@@ -129,7 +141,7 @@ class HomePage extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.all(8.0),
                           child: Text(
-                            "Popular",
+                            "Special",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black,
@@ -145,12 +157,14 @@ class HomePage extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 300, left: 8, right: 8),
+          padding: const EdgeInsets.only(top: 310, left: 8, right: 8),
           child: GridView.count(
             crossAxisCount: 3,
             crossAxisSpacing: 4.0,
             mainAxisSpacing: 8.0,
             scrollDirection: Axis.vertical,
+            childAspectRatio: 0.7,
+            padding: const EdgeInsets.only(top: 10),
             children: [
               Card(
                 elevation: 3,
@@ -198,13 +212,37 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15)),
                 child: Image.asset(
                   "assets/hack.jpg",
-                  fit: BoxFit.cover,
+                  fit: BoxFit.scaleDown,
                 ),
+              ),
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset("assets/signup.png", fit: BoxFit.scaleDown),
+              ),
+              Card(
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
+                child: Image.asset("assets/signup.png", fit: BoxFit.scaleDown),
               ),
             ],
           ),
         )
       ]),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: "Favorite"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.assignment), label: "Orders"),
+        ],
+        selectedItemColor: Colors.orange,
+        currentIndex: _selectedIndex,
+        onTap: onItemTapped,
+      ),
     );
   }
 }
