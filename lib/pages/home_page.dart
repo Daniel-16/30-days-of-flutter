@@ -17,6 +17,8 @@ class _HomePageState extends State<HomePage> {
     // print(_selectedIndex);
   }
 
+  FocusNode _focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,20 +56,23 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 30,
                     ),
-                    const TextField(
-                      decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Color.fromARGB(255, 214, 214, 214),
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15)),
-                              borderSide: BorderSide.none),
-                          labelText: "Search here...",
-                          prefixIcon: Icon(Icons.search),
-                          suffixIcon: Icon(Icons.sync_alt_outlined)),
+                    const SizedBox(
+                      height: 68,
+                      child: TextField(
+                        decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color.fromARGB(255, 214, 214, 214),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(15)),
+                                borderSide: BorderSide.none),
+                            labelText: "Search here...",
+                            prefixIcon: Icon(Icons.search),
+                            suffixIcon: Icon(Icons.sync_alt_outlined)),
+                      ),
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
@@ -161,81 +166,162 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 310, left: 8, right: 8),
-                child: GridView.count(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 4.0,
-                  mainAxisSpacing: 8.0,
-                  scrollDirection: Axis.vertical,
-                  childAspectRatio: 0.7,
-                  padding: const EdgeInsets.only(top: 10),
-                  children: [
-                    Card(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset(
-                        "assets/food1.jpg",
-                        fit: BoxFit.cover,
-                      ),
+                  padding: const EdgeInsets.only(top: 330, left: 8, right: 8),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: 280,
+                              width: MediaQuery.of(context).size.width * 0.44,
+                              decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                      image: AssetImage("assets/food1.jpg"),
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.deepOrangeAccent),
+                              child: const Padding(
+                                padding: EdgeInsets.only(top: 8, left: 8),
+                                child: Center(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Card(
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 6,
+                                            bottom: 6,
+                                            left: 12,
+                                            right: 12),
+                                        child: Text(
+                                          "Price: \$200",
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 280,
+                              width: MediaQuery.of(context).size.width * 0.44,
+                              decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                      image: AssetImage("assets/food2.jpg"),
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.deepOrangeAccent),
+                              child: const Padding(
+                                padding: EdgeInsets.only(top: 8, left: 8),
+                                child: Center(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Card(
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 6,
+                                            bottom: 6,
+                                            left: 12,
+                                            right: 12),
+                                        child: Text(
+                                          "Price: \$2,000",
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: 280,
+                              width: MediaQuery.of(context).size.width * 0.44,
+                              decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                      image: AssetImage("assets/food3.jpg"),
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.deepOrangeAccent),
+                              child: const Padding(
+                                padding: EdgeInsets.only(top: 8, left: 8),
+                                child: Center(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Card(
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 6,
+                                            bottom: 6,
+                                            left: 12,
+                                            right: 12),
+                                        child: Text(
+                                          "Price: \$300",
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 280,
+                              width: MediaQuery.of(context).size.width * 0.44,
+                              decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                      image: AssetImage("assets/food1.jpg"),
+                                      fit: BoxFit.cover),
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.deepOrangeAccent),
+                              child: const Padding(
+                                padding: EdgeInsets.only(top: 8, left: 8),
+                                child: Center(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Card(
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 6,
+                                            bottom: 6,
+                                            left: 12,
+                                            right: 12),
+                                        child: Text(
+                                          "Price: \$12,000",
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
                     ),
-                    Card(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset("assets/food2.jpg", fit: BoxFit.cover),
-                    ),
-                    Card(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset("assets/food3.jpg", fit: BoxFit.cover),
-                    ),
-                    Card(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset(
-                        "assets/food3.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Card(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset(
-                        "assets/food2.jpg",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Card(
-                      semanticContainer: true,
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset(
-                        "assets/food1.jpg",
-                        fit: BoxFit.scaleDown,
-                      ),
-                    ),
-                    Card(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset("assets/food2.jpg",
-                          fit: BoxFit.scaleDown),
-                    ),
-                    Card(
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Image.asset("assets/food3.jpg",
-                          fit: BoxFit.scaleDown),
-                    ),
-                  ],
-                ),
-              )
+                  ))
             ])
           : _selectedIndex == 1
               ? const Center(
