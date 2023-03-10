@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/pages/drawer.dart';
+import 'package:flutter_practice/pages/features_page.dart';
+import 'package:flutter_practice/pages/food_items.dart';
 import 'package:flutter_practice/pages/orders_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,16 +20,17 @@ class _HomePageState extends State<HomePage> {
     // print(_selectedIndex);
   }
 
-  FocusNode _focusNode = FocusNode();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       body: _selectedIndex == 0
           ? Stack(children: [
               Padding(
-                padding: const EdgeInsets.only(top: 90, left: 25, right: 25),
+                padding: const EdgeInsets.only(top: 75, left: 25, right: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -47,14 +51,19 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                        const CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          child: Icon(Icons.person, color: Colors.black54),
+                        GestureDetector(
+                          onTap: (() {
+                            _scaffoldKey.currentState!.openEndDrawer();
+                          }),
+                          child: const CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            child: Icon(Icons.person, color: Colors.black54),
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     const SizedBox(
                       height: 68,
@@ -72,256 +81,13 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          SizedBox(
-                            width: 90,
-                            child: Card(
-                              color: Colors.black,
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Popular",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 90,
-                            child: Card(
-                              color: Colors.grey,
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Recent",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 90,
-                            child: Card(
-                              color: Colors.grey,
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Favorite",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 90,
-                            child: Card(
-                              color: Colors.grey,
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  "New",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 90,
-                            child: Card(
-                              color: Colors.grey,
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text(
-                                  "Special",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    const FeaturesWidget(),
                   ],
                 ),
               ),
-              Padding(
-                  padding: const EdgeInsets.only(top: 330, left: 8, right: 8),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              height: 280,
-                              width: MediaQuery.of(context).size.width * 0.44,
-                              decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                      image: AssetImage("assets/food1.jpg"),
-                                      fit: BoxFit.cover),
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.deepOrangeAccent),
-                              child: const Padding(
-                                padding: EdgeInsets.only(top: 8, left: 8),
-                                child: Center(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Card(
-                                      color: Colors.white,
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 6,
-                                            bottom: 6,
-                                            left: 12,
-                                            right: 12),
-                                        child: Text(
-                                          "Price: \$200",
-                                          style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: 280,
-                              width: MediaQuery.of(context).size.width * 0.44,
-                              decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                      image: AssetImage("assets/food2.jpg"),
-                                      fit: BoxFit.cover),
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.deepOrangeAccent),
-                              child: const Padding(
-                                padding: EdgeInsets.only(top: 8, left: 8),
-                                child: Center(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Card(
-                                      color: Colors.white,
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 6,
-                                            bottom: 6,
-                                            left: 12,
-                                            right: 12),
-                                        child: Text(
-                                          "Price: \$2,000",
-                                          style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              height: 280,
-                              width: MediaQuery.of(context).size.width * 0.44,
-                              decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                      image: AssetImage("assets/food3.jpg"),
-                                      fit: BoxFit.cover),
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.deepOrangeAccent),
-                              child: const Padding(
-                                padding: EdgeInsets.only(top: 8, left: 8),
-                                child: Center(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Card(
-                                      color: Colors.white,
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 6,
-                                            bottom: 6,
-                                            left: 12,
-                                            right: 12),
-                                        child: Text(
-                                          "Price: \$300",
-                                          style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: 280,
-                              width: MediaQuery.of(context).size.width * 0.44,
-                              decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                      image: AssetImage("assets/food1.jpg"),
-                                      fit: BoxFit.cover),
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.deepOrangeAccent),
-                              child: const Padding(
-                                padding: EdgeInsets.only(top: 8, left: 8),
-                                child: Center(
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Card(
-                                      color: Colors.white,
-                                      child: Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 6,
-                                            bottom: 6,
-                                            left: 12,
-                                            right: 12),
-                                        child: Text(
-                                          "Price: \$12,000",
-                                          style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ))
+              const FoodItems()
             ])
           : _selectedIndex == 1
               ? const Center(
@@ -332,6 +98,7 @@ class _HomePageState extends State<HomePage> {
                   : const Center(
                       child: Text("Account profile"),
                     ),
+      endDrawer: const DrawerWidget(),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         elevation: 10,
