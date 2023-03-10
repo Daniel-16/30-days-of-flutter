@@ -58,7 +58,7 @@ class FeaturesWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 90,
             child: Card(
               color: Colors.grey,
@@ -74,7 +74,7 @@ class FeaturesWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 90,
             child: Card(
               color: Colors.grey,

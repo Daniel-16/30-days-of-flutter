@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/pages/drawer.dart';
 import 'package:flutter_practice/pages/features_page.dart';
 import 'package:flutter_practice/pages/food_items.dart';
 import 'package:flutter_practice/pages/orders_screen.dart';
@@ -19,14 +20,17 @@ class _HomePageState extends State<HomePage> {
     // print(_selectedIndex);
   }
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       body: _selectedIndex == 0
           ? Stack(children: [
               Padding(
-                padding: const EdgeInsets.only(top: 90, left: 25, right: 25),
+                padding: const EdgeInsets.only(top: 75, left: 25, right: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -47,14 +51,19 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                        const CircleAvatar(
-                          backgroundColor: Colors.grey,
-                          child: Icon(Icons.person, color: Colors.black54),
+                        GestureDetector(
+                          onTap: (() {
+                            _scaffoldKey.currentState!.openEndDrawer();
+                          }),
+                          child: const CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            child: Icon(Icons.person, color: Colors.black54),
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     const SizedBox(
                       height: 68,
@@ -72,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     const FeaturesWidget(),
                   ],
@@ -89,6 +98,7 @@ class _HomePageState extends State<HomePage> {
                   : const Center(
                       child: Text("Account profile"),
                     ),
+      endDrawer: const DrawerWidget(),
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         elevation: 10,

@@ -6,7 +6,7 @@ class FoodItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(top: 330, left: 8, right: 8),
+        padding: const EdgeInsets.only(top: 290, left: 8, right: 8),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -17,11 +17,11 @@ class FoodItems extends StatelessWidget {
                     height: 280,
                     width: MediaQuery.of(context).size.width * 0.44,
                     decoration: BoxDecoration(
-                        image: const DecorationImage(
-                            image: AssetImage("assets/food1.jpg"),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.deepOrangeAccent),
+                      image: const DecorationImage(
+                          image: AssetImage("assets/food1.jpg"),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                     child: const Padding(
                       padding: EdgeInsets.only(top: 8, left: 8),
                       child: Center(
@@ -47,11 +47,11 @@ class FoodItems extends StatelessWidget {
                     height: 280,
                     width: MediaQuery.of(context).size.width * 0.44,
                     decoration: BoxDecoration(
-                        image: const DecorationImage(
-                            image: AssetImage("assets/food2.jpg"),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.deepOrangeAccent),
+                      image: const DecorationImage(
+                          image: AssetImage("assets/food2.jpg"),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                     child: const Padding(
                       padding: EdgeInsets.only(top: 8, left: 8),
                       child: Center(
@@ -85,11 +85,11 @@ class FoodItems extends StatelessWidget {
                     height: 280,
                     width: MediaQuery.of(context).size.width * 0.44,
                     decoration: BoxDecoration(
-                        image: const DecorationImage(
-                            image: AssetImage("assets/food3.jpg"),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.deepOrangeAccent),
+                      image: const DecorationImage(
+                          image: AssetImage("assets/food3.jpg"),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                     child: const Padding(
                       padding: EdgeInsets.only(top: 8, left: 8),
                       child: Center(
@@ -115,11 +115,11 @@ class FoodItems extends StatelessWidget {
                     height: 280,
                     width: MediaQuery.of(context).size.width * 0.44,
                     decoration: BoxDecoration(
-                        image: const DecorationImage(
-                            image: AssetImage("assets/food1.jpg"),
-                            fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.deepOrangeAccent),
+                      image: const DecorationImage(
+                          image: AssetImage("assets/food1.jpg"),
+                          fit: BoxFit.cover),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                     child: const Padding(
                       padding: EdgeInsets.only(top: 8, left: 8),
                       child: Center(
