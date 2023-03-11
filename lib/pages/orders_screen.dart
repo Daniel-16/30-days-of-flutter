@@ -71,19 +71,81 @@ class OrdersScreen extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
+                      children: [
+                        const Text(
                           "Country Ranged Meat",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(top: 10),
                           child: Text(
                             "Est sit aute excepteur in sint sit ad eu non. Veniam irure officia ea id non sint do nisi velit aliquip nulla culpa consequat.Aliquip anim eu exercitation cillum deserunt elit dolore ut pariatur labore. Sunt voluptate commodo magna quis nisi commodo elit. Consectetur esse exercitation ullamco ea non cupidatat officia amet consequat. Occaecat reprehenderit aute esse id in aute eu non enim id voluptate aliqua dolor. Occaecat ullamco do dolor cupidatat laboris dolor .",
                             style: TextStyle(
                                 fontSize: 15,
                                 color: Color.fromARGB(255, 129, 129, 129)),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Row(
+                            children: [
+                              const Text(
+                                "Reviews",
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold),
+                              ),
+                              const Text(
+                                "(120)",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                              const SizedBox(
+                                width: 110,
+                              ),
+                              Row(
+                                children: const [
+                                  Icon(
+                                    Icons.star,
+                                    size: 18,
+                                    color: Colors.deepOrangeAccent,
+                                  ),
+                                  Icon(
+                                    Icons.star,
+                                    size: 18,
+                                    color: Colors.deepOrangeAccent,
+                                  ),
+                                  Icon(
+                                    Icons.star,
+                                    size: 18,
+                                    color: Colors.deepOrangeAccent,
+                                  ),
+                                  Icon(
+                                    Icons.star_half,
+                                    size: 18,
+                                    color: Colors.deepOrangeAccent,
+                                  ),
+                                  Icon(
+                                    Icons.star_border,
+                                    size: 18,
+                                    color: Colors.deepOrangeAccent,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "4.2",
+                                    style: TextStyle(fontSize: 15),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_ios,
+                                    size: 18,
+                                  )
+                                ],
+                              )
+                            ],
                           ),
                         )
                       ],
