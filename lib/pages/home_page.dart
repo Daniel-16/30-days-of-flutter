@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/pages/drawer.dart';
+import 'package:flutter_practice/pages/favorite_screen.dart';
 import 'package:flutter_practice/pages/features_page.dart';
 import 'package:flutter_practice/pages/food_items.dart';
 import 'package:flutter_practice/pages/orders_screen.dart';
@@ -91,7 +92,7 @@ class _HomePageState extends State<HomePage> {
             ])
           : _selectedIndex == 1
               ? const Center(
-                  child: Text("Favorite page"),
+                  child: FavoriteScreen(),
                 )
               : _selectedIndex == 2
                   ? const OrdersScreen()
@@ -100,8 +101,9 @@ class _HomePageState extends State<HomePage> {
                     ),
       endDrawer: const DrawerWidget(),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         showSelectedLabels: false,
-        elevation: 10,
+        elevation: 0,
         selectedItemColor: Colors.deepOrangeAccent,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: false,
