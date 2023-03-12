@@ -1,4 +1,4 @@
-# flutter_practice
+# 30 Days of Flutter
 
 A new Flutter project.
 
