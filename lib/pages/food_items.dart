@@ -55,11 +55,11 @@ class FoodItems extends StatelessWidget {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 2),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 2),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.star,
                               size: 18,
@@ -120,11 +120,11 @@ class FoodItems extends StatelessWidget {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 2),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 2),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.star_half,
                               size: 18,
@@ -193,11 +193,11 @@ class FoodItems extends StatelessWidget {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 2),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 2),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.star_half,
                               size: 18,
@@ -258,11 +258,11 @@ class FoodItems extends StatelessWidget {
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 2),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 2),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          children: const [
+                          children: [
                             Icon(
                               Icons.star_outline,
                               size: 18,

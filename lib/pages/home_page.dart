@@ -4,6 +4,7 @@ import 'package:flutter_practice/pages/favorite_screen.dart';
 import 'package:flutter_practice/pages/features_page.dart';
 import 'package:flutter_practice/pages/food_items.dart';
 import 'package:flutter_practice/pages/orders_screen.dart';
+import 'package:flutter_practice/pages/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -38,9 +39,9 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
+                        const Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
+                          children: [
                             Text(
                               "Good Morning,",
                               style: TextStyle(fontSize: 17),
@@ -96,9 +97,7 @@ class _HomePageState extends State<HomePage> {
                 )
               : _selectedIndex == 2
                   ? const OrdersScreen()
-                  : const Center(
-                      child: Text("Account profile"),
-                    ),
+                  : const ProfilePage(),
       endDrawer: const DrawerWidget(),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,

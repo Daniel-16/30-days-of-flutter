@@ -5,11 +5,11 @@ class FeaturesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           SizedBox(
             width: 90,
             child: Card(
@@ -58,7 +58,7 @@ class FeaturesWidget extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             width: 90,
             child: Card(
               color: Colors.grey,
@@ -74,7 +74,7 @@ class FeaturesWidget extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             width: 90,
             child: Card(
               color: Colors.grey,
