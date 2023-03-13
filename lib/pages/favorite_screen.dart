@@ -56,14 +56,14 @@ class FavoriteScreen extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ))),
                       ),
-                      SizedBox(
+                      const SizedBox(
                           width: 250,
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, right: 8, top: 40),
+                            padding:
+                                EdgeInsets.only(left: 8, right: 8, top: 40),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text(
                                   "Duis ipsum id labore sint aliqua.",
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -102,14 +102,14 @@ class FavoriteScreen extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ))),
                       ),
-                      SizedBox(
+                      const SizedBox(
                           width: 250,
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, right: 8, top: 40),
+                            padding:
+                                EdgeInsets.only(left: 8, right: 8, top: 40),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text(
                                   "Duis ipsum id labore sint aliqua.",
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -148,14 +148,14 @@ class FavoriteScreen extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ))),
                       ),
-                      SizedBox(
+                      const SizedBox(
                           width: 250,
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, right: 8, top: 40),
+                            padding:
+                                EdgeInsets.only(left: 8, right: 8, top: 40),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text(
                                   "Duis ipsum id labore sint aliqua.",
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -194,14 +194,14 @@ class FavoriteScreen extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ))),
                       ),
-                      SizedBox(
+                      const SizedBox(
                           width: 250,
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, right: 8, top: 40),
+                            padding:
+                                EdgeInsets.only(left: 8, right: 8, top: 40),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text(
                                   "Duis ipsum id labore sint aliqua.",
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -240,14 +240,14 @@ class FavoriteScreen extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ))),
                       ),
-                      SizedBox(
+                      const SizedBox(
                           width: 250,
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, right: 8, top: 40),
+                            padding:
+                                EdgeInsets.only(left: 8, right: 8, top: 40),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text(
                                   "Duis ipsum id labore sint aliqua.",
                                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -286,14 +286,14 @@ class FavoriteScreen extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ))),
                       ),
-                      SizedBox(
+                      const SizedBox(
                           width: 250,
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, right: 8, top: 40),
+                            padding:
+                                EdgeInsets.only(left: 8, right: 8, top: 40),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text(
                                   "Duis ipsum id labore sint aliqua.",
                                   style: TextStyle(fontWeight: FontWeight.bold),

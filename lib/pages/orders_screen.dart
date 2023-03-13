@@ -65,19 +65,19 @@ class OrdersScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10),
+                const Padding(
+                  padding: EdgeInsets.only(top: 10),
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           "Country Ranged Meat",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                        const Padding(
+                        Padding(
                           padding: EdgeInsets.only(top: 10),
                           child: Text(
                             "Est sit aute excepteur in sint sit ad eu non. Veniam irure officia ea id non sint do nisi velit aliquip nulla culpa consequat.Aliquip anim eu exercitation cillum deserunt elit dolore ut pariatur labore. Sunt voluptate commodo magna quis nisi commodo elit. Consectetur esse exercitation ullamco ea non cupidatat officia amet consequat. Occaecat reprehenderit aute esse id in aute eu non enim id voluptate aliqua dolor. Occaecat ullamco do dolor cupidatat laboris dolor .",
@@ -87,23 +87,23 @@ class OrdersScreen extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 5),
+                          padding: EdgeInsets.only(top: 5),
                           child: Row(
                             children: [
-                              const Text(
+                              Text(
                                 "Reviews",
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.bold),
                               ),
-                              const Text(
+                              Text(
                                 "(120)",
                                 style: TextStyle(fontSize: 15),
                               ),
-                              const SizedBox(
+                              SizedBox(
                                 width: 110,
                               ),
                               Row(
-                                children: const [
+                                children: [
                                   Icon(
                                     Icons.star,
                                     size: 18,
