@@ -58,9 +58,8 @@ class _HomePageState extends State<HomePage> {
                             _scaffoldKey.currentState!.openEndDrawer();
                           }),
                           child: const CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            child: Icon(Icons.person, color: Colors.black54),
-                          ),
+                              backgroundColor: Colors.grey,
+                              child: Icon(Icons.person, color: Colors.black54)),
                         ),
                       ],
                     ),
