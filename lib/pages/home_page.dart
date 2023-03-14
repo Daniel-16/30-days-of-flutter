@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                       height: 20,
                     ),
                     const SizedBox(
-                      height: 68,
+                      height: 65,
                       child: TextField(
                         decoration: InputDecoration(
                             filled: true,
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                                 borderSide: BorderSide.none),
                             labelText: "Search here...",
                             prefixIcon: Icon(Icons.search),
-                            suffixIcon: Icon(Icons.sync_alt_outlined)),
+                            suffixIcon: Icon(Icons.sort_sharp)),
                       ),
                     ),
                     const SizedBox(

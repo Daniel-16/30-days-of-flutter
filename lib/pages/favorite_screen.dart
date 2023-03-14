@@ -194,7 +194,7 @@ class FavoriteScreen extends StatelessWidget {
                                   fit: BoxFit.cover,
                                 ))),
                       ),
-                      const SizedBox(
+                      SizedBox(
                           width: 250,
                           child: Padding(
                             padding:
@@ -211,6 +211,29 @@ class FavoriteScreen extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: 12, color: Colors.grey),
                                 ),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: TextButton(
+                                          onPressed: () {},
+                                          child: Icon(Icons.add)),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: Text("1"),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                      width: 20,
+                                      child: TextButton(
+                                          onPressed: () {},
+                                          child: Icon(Icons.minimize_outlined)),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
                           ))
