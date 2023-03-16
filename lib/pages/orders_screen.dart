@@ -147,13 +147,13 @@ class OrdersScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 30,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -185,7 +185,33 @@ class OrdersScreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(13),
                               )),
-                          onPressed: () => {},
+                          onPressed: () => {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title:
+                                            const Text("Checkout listed items"),
+                                        content: const Text(
+                                            "Are you sure you want to checkout?"),
+                                        actions: [
+                                          TextButton(
+                                              style: TextButton.styleFrom(
+                                                  backgroundColor:
+                                                      Colors.deepOrangeAccent),
+                                              onPressed: () {
+                                                Navigator.of(context)
+                                                    .pop("Yes");
+                                              },
+                                              child: const Text(
+                                                "Yes",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ))
+                                        ],
+                                      );
+                                    })
+                              },
                           child: const Text(
                             "Checkout",
                             style: TextStyle(color: Colors.white),
