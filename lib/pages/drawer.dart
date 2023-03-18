@@ -12,7 +12,7 @@ class DrawerWidget extends StatelessWidget {
         child: ListView(
           children: [
             Image.asset(
-              "assets/hack.jpg",
+              "assets/person.jpg",
             ),
             const ListTile(
               title: Text("Shared with me"),
