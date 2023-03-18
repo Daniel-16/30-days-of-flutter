@@ -34,11 +34,11 @@ class ProfilePage extends StatelessWidget {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(100),
                           child: Image.asset(
-                            "assets/hack.jpg",
+                            "assets/person.jpg",
                             fit: BoxFit.cover,
                           ))),
                   const Text(
-                    "Anon Joe",
+                    "Jane Doe",
                     style: TextStyle(fontSize: 30),
                   ),
                   const Text(

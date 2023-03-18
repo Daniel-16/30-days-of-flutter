@@ -24,22 +24,22 @@ class IntroScreen extends StatelessWidget {
                   width: 350,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20.0, right: 20, top: 15),
+              const Padding(
+                padding: EdgeInsets.only(left: 20.0, right: 20, top: 15),
                 child: Text(
                   "Order with One Click.",
                   style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
+              const Padding(
+                padding: EdgeInsets.only(left: 20, right: 20, top: 15),
                 child: Text(
                   "We make it easy for you to order food. You do not need to leave the comfort of your home to get something to eat.",
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Color.fromARGB(255, 138, 138, 138)),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               SizedBox(
@@ -64,12 +64,12 @@ class IntroScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account? "),
+                    const Text("Already have an account? "),
                     GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(context, '/login');
                       },
-                      child: Text(
+                      child: const Text(
                         "Login",
                         style: TextStyle(color: Colors.deepOrangeAccent),
                       ),
