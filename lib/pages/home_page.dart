@@ -58,27 +58,31 @@ class _HomePageState extends State<HomePage> {
                             _scaffoldKey.currentState!.openEndDrawer();
                           }),
                           child: const CircleAvatar(
-                              backgroundColor: Colors.grey,
-                              child: Icon(Icons.person, color: Colors.black54)),
+                            backgroundColor: Colors.grey,
+                            backgroundImage: AssetImage("assets/person.jpg"),
+                          ),
                         ),
                       ],
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    const SizedBox(
+                    SizedBox(
                       height: 65,
                       child: TextField(
                         decoration: InputDecoration(
                             filled: true,
-                            fillColor: Color.fromARGB(255, 214, 214, 214),
-                            enabledBorder: OutlineInputBorder(
+                            fillColor: const Color.fromARGB(255, 214, 214, 214),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide.none),
+                            enabledBorder: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(15)),
                                 borderSide: BorderSide.none),
-                            labelText: "Search here...",
-                            prefixIcon: Icon(Icons.search),
-                            suffixIcon: Icon(Icons.sort_sharp)),
+                            hintText: "Search here...",
+                            prefixIcon: const Icon(Icons.search),
+                            suffixIcon: const Icon(Icons.sort_sharp)),
                       ),
                     ),
                     const SizedBox(

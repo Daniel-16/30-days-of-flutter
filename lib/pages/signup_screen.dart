@@ -100,7 +100,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   padding:
                       const EdgeInsets.only(left: 20.0, right: 20.0, top: 15),
                   child: TextField(
-                    obscureText: obscureText ? false : true,
+                    obscureText: obscureText ? true : false,
                     decoration: InputDecoration(
                         filled: true,
                         focusedBorder: OutlineInputBorder(
@@ -115,8 +115,8 @@ class _SignupScreenState extends State<SignupScreen> {
                         suffixIcon: IconButton(
                             onPressed: setObscureText,
                             icon: obscureText
-                                ? Icon(Icons.visibility_outlined)
-                                : Icon(Icons.visibility_off_outlined)),
+                                ? const Icon(Icons.visibility_outlined)
+                                : const Icon(Icons.visibility_off_outlined)),
                         border: InputBorder.none),
                   ),
                 ),
