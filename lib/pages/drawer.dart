@@ -42,9 +42,12 @@ class DrawerWidget extends StatelessWidget {
               title: Text("Trash"),
               leading: Icon(Icons.delete),
             ),
-            const ListTile(
-              title: Text("Settings & Account"),
-              leading: Icon(Icons.settings),
+            ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              title: const Text("Logout"),
+              leading: const Icon(Icons.logout_rounded),
             ),
           ],
         ),

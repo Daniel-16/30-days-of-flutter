@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -9,6 +8,22 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool wrongEmail = false;
+  String email = "";
+  String password = "";
+
+  void onSubmit() {
+    if (email == "user@mail.com" && password == "User@123") {
+      Navigator.pushNamed(context, '/');
+      wrongEmail = false;
+    } else {
+      print("Invalid Credentials");
+      wrongEmail = true;
+    }
+  }
+
   bool obscureText = true;
   void setObscureText() {
     setState(() {
@@ -48,6 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                 child: TextField(
+                  controller: emailController,
+                  onChanged: (value) => setState(() {
+                    email = value;
+                  }),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                       filled: true,
@@ -67,6 +86,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 padding:
                     const EdgeInsets.only(left: 20.0, right: 20.0, top: 15),
                 child: TextField(
+                  controller: passwordController,
+                  onChanged: (value) => setState(() {
+                    password = value;
+                  }),
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
                       filled: true,
@@ -75,7 +98,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderSide: BorderSide.none),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(15),
-                          borderSide: BorderSide.none),
+                          borderSide: wrongEmail
+                              ? const BorderSide(color: Colors.red)
+                              : BorderSide.none),
                       fillColor: const Color.fromARGB(255, 228, 228, 228),
                       hintText: "Password",
                       prefixIcon: const Icon(Icons.lock_outline_rounded),
@@ -85,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ? const Icon(Icons.visibility_outlined)
                               : const Icon(Icons.visibility_off_outlined)),
                       border: InputBorder.none),
-                  obscureText: obscureText ? false : true,
+                  obscureText: obscureText ? true : false,
                 ),
               ),
               const Padding(
@@ -110,9 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15)))),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/');
-                        },
+                        onPressed: onSubmit,
                         child: const Text(
                           "Login",
                           style: TextStyle(fontSize: 17),
