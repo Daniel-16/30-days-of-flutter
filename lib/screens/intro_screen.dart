@@ -53,7 +53,7 @@ class IntroScreen extends StatelessWidget {
                               RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)))),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/');
+                        Navigator.pushNamed(context, '/signup');
                       },
                       child: const Text(
                         "Get Started",

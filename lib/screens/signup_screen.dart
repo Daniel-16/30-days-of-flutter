@@ -9,24 +9,26 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   bool obscureText = true;
-  final _controller = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   String fullname = "";
+  String email = "";
+  String password = "";
   void setObscureText() {
     setState(() {
       obscureText = !obscureText;
     });
   }
 
-  void handleText(String text) {
-    setState(() {
-      fullname = text;
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  void handleSubmit() {
+    if (fullname == "Test User" &&
+        email == "user@mail.com" &&
+        password == 'User@123') {
+      Navigator.pushNamed(context, '/');
+    } else {
+      print("Unauthorized user");
+    }
   }
 
   @override
@@ -62,8 +64,10 @@ class _SignupScreenState extends State<SignupScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                   child: TextField(
-                    controller: _controller,
-                    onChanged: handleText,
+                    controller: nameController,
+                    onChanged: (value) => setState(() {
+                      fullname = value;
+                    }),
                     decoration: InputDecoration(
                         filled: true,
                         focusedBorder: OutlineInputBorder(
@@ -82,6 +86,11 @@ class _SignupScreenState extends State<SignupScreen> {
                   padding:
                       const EdgeInsets.only(left: 20.0, right: 20.0, top: 15),
                   child: TextField(
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) => setState(() {
+                      email = value;
+                    }),
                     decoration: InputDecoration(
                         filled: true,
                         focusedBorder: OutlineInputBorder(
@@ -100,6 +109,11 @@ class _SignupScreenState extends State<SignupScreen> {
                   padding:
                       const EdgeInsets.only(left: 20.0, right: 20.0, top: 15),
                   child: TextField(
+                    keyboardType: TextInputType.visiblePassword,
+                    controller: passwordController,
+                    onChanged: (value) => setState(() {
+                      password = value;
+                    }),
                     obscureText: obscureText ? true : false,
                     decoration: InputDecoration(
                         filled: true,
@@ -133,11 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(15)))),
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/');
-                            handleText(_controller.text);
-                            print(fullname);
-                          },
+                          onPressed: handleSubmit,
                           child: const Text(
                             "Signup",
                             style: TextStyle(fontSize: 17),
