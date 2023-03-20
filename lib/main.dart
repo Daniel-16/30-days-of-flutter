@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/pages/home_page.dart';
-import 'package:flutter_practice/pages/intro_screen.dart';
-import 'package:flutter_practice/pages/login_screen.dart';
-import 'package:flutter_practice/pages/signup_screen.dart';
+import 'package:flutter_practice/screens/home_screen.dart';
+import 'package:flutter_practice/screens/intro_screen.dart';
+import 'package:flutter_practice/screens/login_screen.dart';
+import 'package:flutter_practice/screens/signup_screen.dart';
 
 void main() async {
   runApp(const MyApp());

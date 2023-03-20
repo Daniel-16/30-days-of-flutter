@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/pages/drawer.dart';
-import 'package:flutter_practice/pages/favorite_screen.dart';
-import 'package:flutter_practice/pages/features_page.dart';
-import 'package:flutter_practice/pages/food_items.dart';
-import 'package:flutter_practice/pages/orders_screen.dart';
-import 'package:flutter_practice/pages/profile_screen.dart';
+import 'package:flutter_practice/screens/drawer.dart';
+import 'package:flutter_practice/screens/favorite_screen.dart';
+import 'package:flutter_practice/screens/features_screen.dart';
+import 'package:flutter_practice/screens/food_items.dart';
+import 'package:flutter_practice/screens/orders_screen.dart';
+import 'package:flutter_practice/screens/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
