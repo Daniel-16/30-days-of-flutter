@@ -32,7 +32,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         centerTitle: true,
         elevation: 0,
         leading: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.popAndPushNamed(context, '/');
+            },
             icon: const Icon(
               Icons.arrow_back_ios,
               color: Colors.black,
