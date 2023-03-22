@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/pages/home_page.dart';
 import 'package:flutter_practice/screens/intro_screen.dart';
 
 void main() async {
@@ -11,13 +12,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(
       //   primarySwatch: Colors.red,
       // ),
-      home: IntroScreen(),
+      initialRoute: '/intro',
+      routes: {
+        '/intro': (context) => const IntroScreen(),
+        '/': (context) => const HomePage()
+      },
     );
   }
 }
