@@ -15,9 +15,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      // theme: ThemeData(
-      //   primarySwatch: Colors.red,
-      // ),
+      theme: ThemeData(textButtonTheme: TextButtonThemeData(style:
+          ButtonStyle(overlayColor: MaterialStateProperty.resolveWith<Color?>(
+        (states) {
+          if (states.contains(MaterialState.pressed)) {
+            return Colors.transparent;
+          }
+          return null;
+        },
+      )))),
       initialRoute: '/intro',
       routes: {
         '/intro': (context) => const IntroScreen(),
