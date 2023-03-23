@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HeadLines extends StatelessWidget {
   final Color color;
-  HeadLines({required this.color, super.key});
+  const HeadLines({required this.color, super.key});
 
   @override
   Widget build(BuildContext context) {
