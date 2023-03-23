@@ -5,7 +5,7 @@ class IntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color _color = Color.fromARGB(255, 28, 121, 198);
+    const Color color = Color.fromARGB(255, 28, 121, 198);
     return Scaffold(
         body: Container(
       padding: const EdgeInsets.only(top: 570),
@@ -45,7 +45,7 @@ class IntroScreen extends StatelessWidget {
                 child: ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(_color),
+                            MaterialStateProperty.all<Color>(color),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
