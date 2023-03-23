@@ -78,14 +78,14 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-      body: Stack(
+      body: const Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: HeadLines(color: navIconBackground),
           ),
-          const Padding(
-            padding: const EdgeInsets.only(left: 8, right: 8, top: 100 * 3.3),
+          Padding(
+            padding: EdgeInsets.only(left: 8, right: 8, top: 100 * 3.3),
             child: Categories(),
           ),
         ],
