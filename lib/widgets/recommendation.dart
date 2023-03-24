@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class Recommended extends StatefulWidget {
   const Recommended({super.key});
@@ -21,9 +22,11 @@ class _RecommendedState extends State<Recommended> {
   }
 
   Future<void> fetchData() async {
+    await dotenv.load();
+    String apiKey = dotenv.env["API_KEY"].toString();
     try {
       final response = await http.get(Uri.parse(
-          'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=af6ea2fbc2e0458bb5c21426bf030ce2'));
+          'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=$apiKey'));
       setState(() {
         loading = false;
         data = jsonDecode(response.body);

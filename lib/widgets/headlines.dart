@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class HeadLines extends StatefulWidget {
   final Color color;
@@ -22,9 +23,11 @@ class _HeadLinesState extends State<HeadLines> {
   }
 
   Future<void> fetchData() async {
+    await dotenv.load();
+    String apiKey = dotenv.env['API_KEY'].toString();
     try {
-      final response = await http.get(Uri.parse(
-          'https://newsapi.org/v2/everything?q=Tech&apiKey=af6ea2fbc2e0458bb5c21426bf030ce2'));
+      final response = await http.get(
+          Uri.parse('https://newsapi.org/v2/everything?q=Tech&apiKey=$apiKey'));
       setState(() {
         loading = false;
         data = jsonDecode(response.body);
