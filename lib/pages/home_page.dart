@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/widgets/categories.dart';
 import 'package:flutter_practice/widgets/headlines.dart';
+import 'package:flutter_practice/widgets/recommendation.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -87,6 +88,10 @@ class HomePage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 8, right: 8, top: 100 * 3.3),
             child: Categories(),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 8, right: 8, top: 100 * 3.9),
+            child: Recommended(),
           ),
         ],
       ),
