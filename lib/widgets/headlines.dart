@@ -46,12 +46,13 @@ class _HeadLinesState extends State<HeadLines> {
         ? Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Align(
-                alignment: Alignment.center,
+                alignment: Alignment.topCenter,
                 child: CircularProgressIndicator()),
           )
         : errorMessage.isNotEmpty
             ? Center(
-                child: Text(errorMessage),
+                child: Align(
+                    alignment: Alignment.topCenter, child: Text(errorMessage)),
               )
             : Stack(
                 children: [
