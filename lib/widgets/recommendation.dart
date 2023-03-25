@@ -47,7 +47,7 @@ class _RecommendedState extends State<Recommended> {
             ? Center(child: Text(errorMessage))
             : SizedBox(
                 child: ListView.builder(
-                    itemCount: 6,
+                    itemCount: 10,
                     itemBuilder: (context, index) {
                       return Container(
                           margin: EdgeInsets.only(bottom: 10),
