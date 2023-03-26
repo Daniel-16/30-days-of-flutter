@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/pages/home_page.dart';
 import 'package:flutter_practice/screens/intro_screen.dart';
-import 'package:flutter_practice/screens/news_details.dart';
 
 void main() async {
   runApp(const MyApp());

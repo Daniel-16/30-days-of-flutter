@@ -45,8 +45,8 @@ class _HeadLinesState extends State<HeadLines> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
+        ? const Padding(
+            padding: EdgeInsets.only(bottom: 8.0),
             child: Align(
                 alignment: Alignment.topCenter,
                 child: CircularProgressIndicator()),
@@ -103,7 +103,7 @@ class _HeadLinesState extends State<HeadLines> {
                               child: Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Padding(
-                                  padding: EdgeInsets.only(bottom: 8.0),
+                                  padding: const EdgeInsets.only(bottom: 8.0),
                                   child: SizedBox(
                                     width: 300,
                                     height: 40,
