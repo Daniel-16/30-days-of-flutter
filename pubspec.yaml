@@ -38,6 +38,8 @@ dependencies:
   http: ^0.13.5
   shared_preferences: ^2.0.18
   flutter_dotenv: ^5.0.2
+  webview_flutter: ^4.0.7
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:

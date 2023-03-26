@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import '../screens/news_details.dart';
+
 class HeadLines extends StatefulWidget {
   final Color color;
   const HeadLines({required this.color, super.key});
@@ -78,31 +80,41 @@ class _HeadLinesState extends State<HeadLines> {
                         scrollDirection: Axis.horizontal,
                         itemCount: 5,
                         itemBuilder: ((context, index) {
-                          return Container(
-                            margin: const EdgeInsets.only(
-                                top: 60, left: 5, right: 5),
-                            height: 40,
-                            width: 350,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                image: DecorationImage(
-                                    image: NetworkImage(
-                                        data["articles"][index]['urlToImage']),
-                                    fit: BoxFit.cover)),
-                            child: Align(
-                              alignment: Alignment.bottomCenter,
-                              child: Padding(
-                                padding: EdgeInsets.only(bottom: 8.0),
-                                child: SizedBox(
-                                  width: 300,
-                                  height: 40,
-                                  child: Center(
-                                    child: Text(
-                                      data['articles'][index]['title'],
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold),
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => NewsDetails(
+                                            articles: data['articles'][index],
+                                          )));
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.only(
+                                  top: 60, left: 5, right: 5),
+                              height: 40,
+                              width: 350,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                      image: NetworkImage(data["articles"]
+                                          [index]['urlToImage']),
+                                      fit: BoxFit.cover)),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Padding(
+                                  padding: EdgeInsets.only(bottom: 8.0),
+                                  child: SizedBox(
+                                    width: 300,
+                                    height: 40,
+                                    child: Center(
+                                      child: Text(
+                                        data['articles'][index]['title'],
+                                        style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                   ),
                                 ),
