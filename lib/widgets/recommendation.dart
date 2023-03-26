@@ -43,7 +43,7 @@ class _RecommendedState extends State<Recommended> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Center(child: CircularProgressIndicator())
+        ? const Center(child: CircularProgressIndicator())
         : errorMessage.isNotEmpty
             ? Center(child: Text(errorMessage))
             : SizedBox(
@@ -51,7 +51,7 @@ class _RecommendedState extends State<Recommended> {
                     itemCount: 10,
                     itemBuilder: (context, index) {
                       return Container(
-                          margin: EdgeInsets.only(bottom: 10),
+                          margin: const EdgeInsets.only(bottom: 10),
                           child: GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -75,7 +75,7 @@ class _RecommendedState extends State<Recommended> {
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.all(10.0),
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 270,
                                       child: Text(data["articles"][index]
                                               ["title"]
