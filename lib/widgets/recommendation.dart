@@ -47,46 +47,51 @@ class _RecommendedState extends State<Recommended> {
         : errorMessage.isNotEmpty
             ? Center(child: Text(errorMessage))
             : SizedBox(
-                child: ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return Container(
-                          margin: const EdgeInsets.only(bottom: 10),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => NewsDetails(
-                                            articles: data['articles'][index],
-                                          )));
-                            },
-                            child: Card(
-                              child: Row(
-                                children: [
-                                  Container(
-                                    height: 70,
-                                    width: 70,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: NetworkImage(data['articles']
-                                                [index]["urlToImage"]),
-                                            fit: BoxFit.cover)),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: SizedBox(
-                                      width: 270,
-                                      child: Text(data["articles"][index]
-                                              ["title"]
-                                          .toString()),
+                child: RefreshIndicator(
+                  key: GlobalKey<RefreshIndicatorState>(),
+                  onRefresh: fetchData,
+                  child: ListView.builder(
+                      itemCount: data['articles'].length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                            margin: const EdgeInsets.only(bottom: 10),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => NewsDetails(
+                                              articles: data['articles'][index],
+                                            )));
+                              },
+                              child: Card(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 70,
+                                      width: 70,
+                                      decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                              image: NetworkImage(
+                                                  data['articles'][index]
+                                                      ["urlToImage"]),
+                                              fit: BoxFit.cover)),
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: SizedBox(
+                                        width: 270,
+                                        child: Text(data["articles"][index]
+                                                ["title"]
+                                            .toString()),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ));
-                    }),
+                            ));
+                      }),
+                ),
               );
   }
 }
