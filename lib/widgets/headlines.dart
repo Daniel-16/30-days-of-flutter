@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/screens/all_news.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -58,27 +59,11 @@ class _HeadLinesState extends State<HeadLines> {
               )
             : Stack(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Breaking News",
-                        style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.w600),
-                      ),
-                      TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            "Show More",
-                            style: TextStyle(color: Colors.grey, fontSize: 17),
-                          )),
-                    ],
-                  ),
                   SizedBox(
                     height: 300,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 5,
+                        itemCount: 20,
                         itemBuilder: ((context, index) {
                           return GestureDetector(
                             onTap: () {
@@ -122,7 +107,35 @@ class _HeadLinesState extends State<HeadLines> {
                             ),
                           );
                         })),
-                  )
+                  ),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    left: 0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          "Breaking News",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.w600),
+                        ),
+                        TextButton(
+                            onPressed: () => {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const AllNews()))
+                                },
+                            child: const Text(
+                              "Show More",
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 17),
+                            )),
+                      ],
+                    ),
+                  ),
                 ],
               );
   }

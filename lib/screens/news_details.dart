@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class NewsDetails extends StatelessWidget {
   final dynamic articles;
@@ -24,35 +23,36 @@ class NewsDetails extends StatelessWidget {
       // ),
       body: Column(
         children: [
-          Container(
-              decoration: const BoxDecoration(),
-              child: Stack(children: [
-                Image.network(articles['urlToImage']),
-                Positioned(
-                    top: 55,
-                    left: 13,
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 90, 90, 90),
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Center(
-                        child: IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.white,
-                              size: 20,
-                              fill: 1,
-                            )),
-                      ),
-                    ))
-              ])),
+          Stack(children: [
+            SizedBox(
+                height: 400,
+                child:
+                    Image.network(articles['urlToImage'], fit: BoxFit.cover)),
+            Positioned(
+                top: 55,
+                left: 13,
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 90, 90, 90),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Center(
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.white,
+                          size: 20,
+                          fill: 1,
+                        )),
+                  ),
+                ))
+          ]),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
                 Text(
@@ -67,18 +67,9 @@ class NewsDetails extends StatelessWidget {
                     fontSize: 17,
                   ),
                 ),
-                GestureDetector(
-                  onTap: () async {
-                    if (await canLaunchUrl(Uri.parse(articles['url']))) {
-                      await launchUrl(articles['url']);
-                    } else {
-                      throw 'Could not launch url';
-                    }
-                  },
-                  child: const Text(
-                    "Read More",
-                    style: TextStyle(fontSize: 17, color: Colors.blue),
-                  ),
+                const Text(
+                  "Read More",
+                  style: TextStyle(fontSize: 17, color: Colors.blue),
                 ),
               ],
             ),

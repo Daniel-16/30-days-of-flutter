@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
 
-class Categories extends StatelessWidget {
+class Categories extends StatefulWidget {
   const Categories({super.key});
+
+  @override
+  State<Categories> createState() => _CategoriesState();
+}
+
+class _CategoriesState extends State<Categories> {
+  bool pillColorChange = false;
+  void toggle() {
+    setState(() {
+      pillColorChange = !pillColorChange;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +38,22 @@ class Categories extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  width: 90,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: pillColor),
-                  child: const Center(
-                    child: Text(
-                      "⚽ Sports",
-                      style: TextStyle(
-                          color: Colors.black54, fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onTap: toggle,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 10),
+                    width: 90,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: pillColorChange
+                            ? const Color.fromARGB(255, 46, 120, 181)
+                            : pillColor),
+                    child: const Center(
+                      child: Text(
+                        "⚽ Sports",
+                        style: TextStyle(
+                            color: Colors.black54, fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
