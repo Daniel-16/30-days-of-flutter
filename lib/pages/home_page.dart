@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/screens/search_screen.dart';
 import 'package:flutter_practice/widgets/categories.dart';
 import 'package:flutter_practice/widgets/headlines.dart';
 import 'package:flutter_practice/widgets/recommendation.dart';
@@ -52,7 +53,12 @@ class HomePage extends StatelessWidget {
                         color: Colors.white),
                     child: IconButton(
                       splashRadius: 1,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SearchScreen()));
+                      },
                       icon: const Icon(
                         Icons.search_rounded,
                         color: iconColor,

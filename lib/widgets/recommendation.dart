@@ -96,8 +96,8 @@ class _RecommendedState extends State<Recommended> {
                                                 .toString()),
                                             Text(
                                               output,
-                                              style:
-                                                  TextStyle(color: Colors.grey),
+                                              style: const TextStyle(
+                                                  color: Colors.grey),
                                             )
                                           ],
                                         ),
