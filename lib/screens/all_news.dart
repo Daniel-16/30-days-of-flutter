@@ -77,6 +77,11 @@ class _AllNewsState extends State<AllNews> {
                   child: ListView.builder(
                       itemCount: data['articles'].length,
                       itemBuilder: (context, index) {
+                        String input = data['articles'][index]['publishedAt'];
+                        List<String> dateTimeComponents = input.split('T');
+                        String dateComponent = dateTimeComponents[0];
+                        String convertedDate =
+                            '${dateComponent.substring(0, 4)}-${dateComponent.substring(5, 7)}-${dateComponent.substring(8, 10)}';
                         return GestureDetector(
                           onTap: () {
                             Navigator.push(
@@ -103,14 +108,31 @@ class _AllNewsState extends State<AllNews> {
                                   decoration: BoxDecoration(
                                       color: Colors.black.withOpacity(0.3)),
                                   width: 300,
-                                  height: 40,
-                                  child: Center(
-                                    child: Text(
-                                      data['articles'][index]['title'],
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold),
+                                  height: 60,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8.0, right: 8),
+                                    child: Center(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            data['articles'][index]['title'],
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            convertedDate,
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

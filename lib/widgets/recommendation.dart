@@ -53,6 +53,12 @@ class _RecommendedState extends State<Recommended> {
                   child: ListView.builder(
                       itemCount: data['articles'].length,
                       itemBuilder: (context, index) {
+                        String input =
+                            data['articles'][index]['publishedAt'].toString();
+                        List<String> dateTimeComponents = input.split('T');
+                        String dateComponent = dateTimeComponents[0];
+                        String output =
+                            '${dateComponent.substring(0, 4)}-${dateComponent.substring(5, 7)}-${dateComponent.substring(8, 10)}';
                         return Container(
                             margin: const EdgeInsets.only(bottom: 10),
                             child: GestureDetector(
@@ -81,9 +87,20 @@ class _RecommendedState extends State<Recommended> {
                                       padding: const EdgeInsets.all(10.0),
                                       child: SizedBox(
                                         width: 270,
-                                        child: Text(data["articles"][index]
-                                                ["title"]
-                                            .toString()),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(data["articles"][index]
+                                                    ["title"]
+                                                .toString()),
+                                            Text(
+                                              output,
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
