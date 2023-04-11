@@ -1,7 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:easy_search_bar/easy_search_bar.dart';
+// import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -55,11 +54,12 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             TextField(
               controller: controller,
+              autofocus: true,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                   hintText: "Search for news here",
                   prefixIcon: const Icon(Icons.search),
-                  suffixIcon: Icon(Icons.cancel_outlined),
+                  suffixIcon: const Icon(Icons.cancel_outlined),
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.grey),
                       borderRadius: BorderRadius.circular(15))),
