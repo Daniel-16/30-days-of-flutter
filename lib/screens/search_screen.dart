@@ -1,8 +1,11 @@
+// import 'dart:convert';
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 // import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import '../utils/news_posts.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -17,19 +20,37 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();
-    getNewsInformation();
+    getNewsPosts();
   }
 
-  Future<void> getNewsInformation() async {
-    await dotenv.load();
-    String apiKey = dotenv.env['API_KEY'].toString();
-    try {
-      final response = await http.get(
-          Uri.parse('https://newsapi.org/v2/everything?q=Tech&apiKey=$apiKey'));
-      final data = jsonDecode(response.body);
-    } catch (error) {
-      print(error);
+  List<NewsPost> newsPost = [];
+  List<NewsPost> searchResult = [];
+
+  void onSearchTextChange(String text) async {
+    searchResult.clear();
+    if (text.isEmpty) {
+      setState(() {});
+      return;
     }
+    newsPost.forEach((news) {
+      if (news.title.contains(text)) {
+        newsPost.add(news);
+      }
+    });
+    setState(() {});
+  }
+
+  Future<void> getNewsPosts() async {
+    await dotenv.load();
+    String apiKey = dotenv.env["API_KEY"].toString();
+    final response = await http.get(Uri.parse(
+        'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=$apiKey'));
+    final data = jsonDecode(response.body);
+    setState(() {
+      for (Map news in data) {
+        newsPost.add(NewsPost.fromJson(news));
+      }
+    });
   }
 
   @override
@@ -55,15 +76,35 @@ class _SearchScreenState extends State<SearchScreen> {
             TextField(
               controller: controller,
               autofocus: true,
+              onChanged: onSearchTextChange,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
                   hintText: "Search for news here",
                   prefixIcon: const Icon(Icons.search),
-                  suffixIcon: const Icon(Icons.cancel_outlined),
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        controller.clear();
+                        onSearchTextChange("");
+                      },
+                      icon: Icon(Icons.cancel_outlined)),
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.grey),
                       borderRadius: BorderRadius.circular(15))),
             ),
+            Container(
+              child: Expanded(
+                  child: controller.text.isNotEmpty
+                      ? ListView.builder(
+                          itemCount: 10,
+                          itemBuilder: (BuildContext context, index) {
+                            return Card(
+                              child: ListTile(
+                                title: Text(newsPost[index].title),
+                              ),
+                            );
+                          })
+                      : Text("Could not find any data")),
+            )
           ],
         ),
       ),
