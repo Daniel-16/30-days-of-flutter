@@ -48,11 +48,13 @@ class _CategoriesState extends State<Categories> {
                         color: pillColorChange
                             ? const Color.fromARGB(255, 46, 120, 181)
                             : pillColor),
-                    child: const Center(
+                    child: Center(
                       child: Text(
                         "⚽ Sports",
                         style: TextStyle(
-                            color: Colors.black54, fontWeight: FontWeight.bold),
+                            color:
+                                pillColorChange ? Colors.white : Colors.black54,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),

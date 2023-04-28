@@ -6,9 +6,11 @@ class IntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const Color color = Color.fromARGB(255, 28, 121, 198);
+    double paddingY = MediaQuery.of(context).size.height;
+    double paddingX = MediaQuery.of(context).size.width;
     return Scaffold(
         body: Container(
-      padding: const EdgeInsets.only(top: 570),
+      padding: EdgeInsets.only(top: paddingY * 0.7),
       width: double.maxFinite,
       height: double.maxFinite,
       decoration: const BoxDecoration(

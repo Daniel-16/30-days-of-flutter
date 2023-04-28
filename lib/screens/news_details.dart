@@ -6,6 +6,7 @@ class NewsDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double top = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.white,
       // appBar: AppBar(
@@ -29,7 +30,7 @@ class NewsDetails extends StatelessWidget {
                 child:
                     Image.network(articles['urlToImage'], fit: BoxFit.cover)),
             Positioned(
-                top: 55,
+                top: top * 0.09,
                 left: 13,
                 child: Container(
                   width: 40,

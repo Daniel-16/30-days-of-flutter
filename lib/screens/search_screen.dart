@@ -1,4 +1,11 @@
+// import 'dart:convert';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+// import 'package:easy_search_bar/easy_search_bar.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import '../utils/news_posts.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -8,6 +15,44 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    getNewsPosts();
+  }
+
+  List<NewsPost> newsPost = [];
+  List<NewsPost> searchResult = [];
+
+  void onSearchTextChange(String text) async {
+    searchResult.clear();
+    if (text.isEmpty) {
+      setState(() {});
+      return;
+    }
+    newsPost.forEach((news) {
+      if (news.title.contains(text)) {
+        newsPost.add(news);
+      }
+    });
+    setState(() {});
+  }
+
+  Future<void> getNewsPosts() async {
+    await dotenv.load();
+    String apiKey = dotenv.env["API_KEY"].toString();
+    final response = await http.get(Uri.parse(
+        'https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=$apiKey'));
+    final data = jsonDecode(response.body);
+    setState(() {
+      for (Map news in data) {
+        newsPost.add(NewsPost.fromJson(news));
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,14 +71,41 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: Container(
         padding: const EdgeInsets.all(8),
-        child: TextField(
-          keyboardType: TextInputType.text,
-          decoration: InputDecoration(
-              hintText: "Search for news here",
-              prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(15))),
+        child: Column(
+          children: [
+            TextField(
+              controller: controller,
+              autofocus: true,
+              onChanged: onSearchTextChange,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                  hintText: "Search for news here",
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        controller.clear();
+                        onSearchTextChange("");
+                      },
+                      icon: Icon(Icons.cancel_outlined)),
+                  border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(15))),
+            ),
+            Container(
+              child: Expanded(
+                  child: controller.text.isNotEmpty
+                      ? ListView.builder(
+                          itemCount: 10,
+                          itemBuilder: (BuildContext context, index) {
+                            return Card(
+                              child: ListTile(
+                                title: Text(newsPost[index].title),
+                              ),
+                            );
+                          })
+                      : Text("Could not find any data")),
+            )
+          ],
         ),
       ),
     );
