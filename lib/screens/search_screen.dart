@@ -86,25 +86,23 @@ class _SearchScreenState extends State<SearchScreen> {
                         controller.clear();
                         onSearchTextChange("");
                       },
-                      icon: Icon(Icons.cancel_outlined)),
+                      icon: const Icon(Icons.cancel_outlined)),
                   border: OutlineInputBorder(
                       borderSide: const BorderSide(color: Colors.grey),
                       borderRadius: BorderRadius.circular(15))),
             ),
-            Container(
-              child: Expanded(
-                  child: controller.text.isNotEmpty
-                      ? ListView.builder(
-                          itemCount: 10,
-                          itemBuilder: (BuildContext context, index) {
-                            return Card(
-                              child: ListTile(
-                                title: Text(newsPost[index].title),
-                              ),
-                            );
-                          })
-                      : Text("Could not find any data")),
-            )
+            Expanded(
+                child: controller.text.isNotEmpty
+                    ? ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (BuildContext context, index) {
+                          return Card(
+                            child: ListTile(
+                              title: Text(newsPost[index].title),
+                            ),
+                          );
+                        })
+                    : const Text("Could not find any data"))
           ],
         ),
       ),
