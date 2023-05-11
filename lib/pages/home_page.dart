@@ -54,10 +54,10 @@ class HomePage extends StatelessWidget {
                     child: IconButton(
                       splashRadius: 1,
                       onPressed: () {
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => const SearchScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SearchScreen()));
                       },
                       icon: const Icon(
                         Icons.search_rounded,
