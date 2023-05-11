@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../utils/news_posts.dart';
-import '../utils/data.dart';
+// import '../utils/data.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -33,11 +33,11 @@ class _SearchScreenState extends State<SearchScreen> {
       setState(() {});
       return;
     }
-    newsPost.forEach((news) {
-      if (news.title.contains(text)) {
-        newsPost.add(news);
-      }
-    });
+    // newsPost.forEach((news) {
+    //   if (news.title.contains(text)) {
+    //     newsPost.add(news);
+    //   }
+    // });
     setState(() {});
   }
 
