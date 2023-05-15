@@ -15,7 +15,7 @@ class IntroScreen extends StatelessWidget {
       height: double.maxFinite,
       decoration: const BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/news2.jpg"), fit: BoxFit.cover)),
+              image: AssetImage("assets/landscape.jpg"), fit: BoxFit.cover)),
       child: Column(
         children: [
           const Padding(

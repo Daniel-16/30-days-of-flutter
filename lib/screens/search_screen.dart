@@ -80,7 +80,7 @@ class _SearchScreenState extends State<SearchScreen> {
               onChanged: onSearchTextChange,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                  hintText: "Search for news here",
+                  hintText: "Search for all news",
                   prefixIcon: const Icon(Icons.search),
                   suffixIcon: IconButton(
                       onPressed: () {
