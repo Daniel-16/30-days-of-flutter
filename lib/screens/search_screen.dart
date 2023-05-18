@@ -103,8 +103,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                         image: AssetImage('assets/hack.jpg'),
                                         fit: BoxFit.cover)),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
                                 child: Text("Lorem ipsum dolor sit"),
                               )
                             ],
