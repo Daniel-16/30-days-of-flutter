@@ -68,9 +68,9 @@ class NewsDetails extends StatelessWidget {
                     fontSize: 17,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 270.0, top: 8.0),
-                  child: const Text(
+                const Padding(
+                  padding: EdgeInsets.only(right: 270.0, top: 8.0),
+                  child: Text(
                     "Read More",
                     style: TextStyle(fontSize: 17, color: Colors.blue),
                   ),
